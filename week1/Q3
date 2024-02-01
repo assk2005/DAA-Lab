@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+int min(int,int);
+void search(int [],int,int,int);
+
+int main()
+{
+	int tc,inputs,linear;
+    int i,j,k;
+    cin>>tc;
+    for(i=0;i<tc;i++)
+    {
+        cin>>inputs;
+        int a[inputs];
+        for(j=0;j<inputs;j++)
+            cin>>a[j];
+        cin>>linear;
+        j=1;
+        while(j<inputs && a[j]<=linear)
+        {
+        	j=j*2;
+        }
+        k=min(j,inputs-1);
+        search(a,j/2,k,linear);
+	}
+	return 0;
+}
+
+int min(int i,int j)
+{
+	if(i<j)
+		return i;
+	else
+		return j;
+}
+
+void search(int a[],int s,int e,int key)
+{
+	int flag=0,comp=0,i;
+	for(i=s;i<=e;i++)
+	{
+		comp++;
+		if(key==a[i])
+		{
+			flag=1;
+			cout<<"Present "<<comp<<endl;
+			break;
+        }
+	}
+	if(flag==0)
+		cout<<"Not Present "<<comp<<endl;
+	return;
+}
