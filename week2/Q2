@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int tc;
+    cin>>tc;
+    for(int p=0;p<tc;p++)
+    {
+        int n;
+        cin>>n;
+        int arr[n];
+        for(int q=0;q<n;q++)
+            cin>>arr[q];
+        int i,j,k;
+        int temp,flag=0;
+        for(k=n-1;k>=2;k--)
+        {
+            i=0;
+            j=k-1;
+            while(i<j)
+            {
+                temp=arr[i]+arr[j];
+                if(temp==arr[k])
+                {
+                    cout<<i+1<<","<<j+1<<","<<k+1<<endl;
+                    flag=1; 
+                    k--;
+                    j=k-1;
+                }
+                else if(temp<arr[k])
+                    i++;
+                else{
+                    j--;
+                    i=0;
+                }
+            }
+        }
+        if(!flag)
+            cout<<"No Sequence Found"<<endl;
+    }
+    return 0;
+}
